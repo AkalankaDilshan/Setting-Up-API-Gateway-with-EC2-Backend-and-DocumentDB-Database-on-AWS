@@ -8,25 +8,25 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 # allow load balancer route 
-resource "aws_security_group_rule" "allow_ssh_lb" {
-  type              = "ingress"
-  description       = "SSH ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcl"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ec2_sg.id
-}
+# resource "aws_security_group_rule" "allow_ssh_lb" {
+#   type              = "ingress"
+#   description       = "SSH ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcl"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.ec2_sg.id
+# }
 
-resource "aws_security_group_rule" "allow_http_lb" {
-  type              = "ingress"
-  description       = "HTTP ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcl"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.ec2_sg.id
-}
+# resource "aws_security_group_rule" "allow_http_lb" {
+#   type              = "ingress"
+#   description       = "HTTP ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcl"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.ec2_sg.id
+# }
 #allow route for NAT gateway 
 resource "aws_security_group_rule" "allow_ssh" {
   type              = "ingress"
