@@ -9,7 +9,7 @@ variable "cidr_block" {
 }
 
 variable "availability_zones" {
-  type        = string
+  type        = list(string)
   description = "availability_zones list"
 }
 
