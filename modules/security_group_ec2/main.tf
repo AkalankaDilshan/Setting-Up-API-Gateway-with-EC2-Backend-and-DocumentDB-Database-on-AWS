@@ -28,15 +28,15 @@ resource "aws_security_group" "ec2_sg" {
 #   security_group_id = aws_security_group.ec2_sg.id
 # }
 #allow route for NAT gateway 
-resource "aws_security_group_rule" "allow_ssh" {
-  type              = "ingress"
-  description       = ""
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = [for ip in var.nat_gateway_eip : "${ip}/32"]
-  security_group_id = aws_security_group.ec2_sg.id
-}
+# resource "aws_security_group_rule" "allow_ssh" {
+#   type              = "ingress"
+#   description       = ""
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"
+#   cidr_blocks       = [for ip in var.nat_gateway_eip : "${ip}/32"]
+#   security_group_id = aws_security_group.ec2_sg.id
+# }
 
 resource "aws_security_group_rule" "allow_http" {
   type              = "ingress"
@@ -48,15 +48,15 @@ resource "aws_security_group_rule" "allow_http" {
   security_group_id = aws_security_group.ec2_sg.id
 }
 
-resource "aws_security_group_rule" "allow_https" {
-  type              = "ingress"
-  description       = "HTTP ingress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = [for ip in var.nat_gateway_eip : "${ip}/32"]
-  security_group_id = aws_security_group.ec2_sg.id
-}
+# resource "aws_security_group_rule" "allow_https" {
+#   type              = "ingress"
+#   description       = "HTTP ingress"
+#   from_port         = 443
+#   to_port           = 443
+#   protocol          = "tcp"
+#   cidr_blocks       = [for ip in var.nat_gateway_eip : "${ip}/32"]
+#   security_group_id = aws_security_group.ec2_sg.id
+# }
 
 resource "aws_security_group_rule" "allow_all_outbound" {
   type              = "egress"
