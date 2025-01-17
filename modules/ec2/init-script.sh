@@ -10,6 +10,9 @@ sudo yum install -y httpd
 sudo systemctl start httpd
 sudo systemctl enable httpd
 
+# Fetch the Availability Zone of the EC2 instance
+AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+
 echo "
 <!DOCTYPE html>
 <html>
@@ -17,7 +20,7 @@ echo "
           <title> API and Load Balancer Test</title>
      </head>
      <body>
-          <h2> private Backend server</h2>
+          <h1>Availability Zone :- $AZ </h1>
      </body>
 </html>" | sudo tee /var/www/html/index.html
 
