@@ -52,3 +52,15 @@ module "server_instance_2" {
   # key_pair_name         = module.key_pair.key_pair_name
   depends_on = [module.ec2_security_group, module.key_pair]
 }
+
+module "load_balancer" {
+  source             = "./modules/application-load-balancer"
+  alb_name           = "app-lb"
+  load_balancer_type = "application"
+  vpc_id             = module.main_vpc.vpc_id
+  alb_subnet_ids     = flatten(module.main_vpc.public_subnet_id)
+  target_group_type  = "instance"
+  targets_ids        = [module.server_instance_1.instance_private_ip, module.server_instance_2.instance_private_ip]
+  security_group_id  = module.lb_security_group.lb_sg_id
+  depends_on         = [module.lb_security_group, module.server_instance_1, module.server_instance_2]
+}
