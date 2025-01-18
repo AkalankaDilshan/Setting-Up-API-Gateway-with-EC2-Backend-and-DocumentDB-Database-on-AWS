@@ -91,7 +91,7 @@ resource "aws_route" "private_route" {
 resource "aws_route_table_association" "private_rt_association" {
   count          = length(aws_subnet.private_subnet)
   subnet_id      = aws_subnet.private_subnet[count.index].id
-  route_table_id = aws_route.private_rt[count.index].id
+  route_table_id = aws_route_table.private_rt[count.index].id
 }
 
 # Network ACL Section
