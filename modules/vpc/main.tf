@@ -88,6 +88,12 @@ resource "aws_route" "private_route" {
   nat_gateway_id         = aws_nat_gateway.nat_gateway[count.index].id
 }
 
+resource "aws_route_table_association" "private_rt_association" {
+  count          = length(aws_subnet.private_subnet)
+  subnet_id      = aws_subnet.private_subnet[count.index].id
+  route_table_id = aws_route.private_route[count.index].id
+}
+
 # Network ACL Section
 resource "aws_network_acl" "vpc_ACL" {
   vpc_id = aws_vpc.main_vpc.id
