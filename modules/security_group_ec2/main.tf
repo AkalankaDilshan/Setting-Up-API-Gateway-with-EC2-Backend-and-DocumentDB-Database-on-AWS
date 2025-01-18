@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "allow_ssh_lb" {
   description = "SSH ingress"
   from_port   = 22
   to_port     = 22
-  protocol    = "tcl"
+  protocol    = "tcp"
   # cidr_blocks       = ["0.0.0.0/0"]
   source_security_group_id = var.load_balancer_security_group_id
   security_group_id        = aws_security_group.ec2_sg.id
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "allow_http_lb" {
   description = "HTTP ingress"
   from_port   = 80
   to_port     = 80
-  protocol    = "tcl"
+  protocol    = "tcp"
   # cidr_blocks       = ["0.0.0.0/0"]
   source_security_group_id = var.load_balancer_security_group_id
   security_group_id        = aws_security_group.ec2_sg.id
