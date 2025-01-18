@@ -28,7 +28,7 @@ resource "aws_instance" "server_instance" {
     encrypted   = true
   }
 
-  key_name = var.key_pair_name
+  # key_name = var.key_pair_name
 
   tags = {
     Name = var.instance_name
