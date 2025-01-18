@@ -30,7 +30,7 @@ variable "ebs_volume_size" {
   default     = 8
 }
 
-variable "key_pair_name" {
-  type        = string
-  description = "name for ec2 ssh instance key pair"
-}
+# variable "key_pair_name" {
+#   type        = string
+#   description = "name for ec2 ssh instance key pair"
+# }

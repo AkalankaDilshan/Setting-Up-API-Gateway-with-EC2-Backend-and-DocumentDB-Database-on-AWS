@@ -37,8 +37,8 @@ module "server_instance_1" {
   vpc_security_group_id = module.ec2_security_group.ec2_sg_id
   ebs_volume_size       = 8
   ebs_volume_type       = "gp2"
-  key_pair_name         = module.key_pair.key_pair_name
-  depends_on            = [module.ec2_security_group, module.key_pair]
+  # key_pair_name         = module.key_pair.key_pair_name
+  depends_on = [module.ec2_security_group, module.key_pair]
 }
 
 module "server_instance_2" {
@@ -49,6 +49,6 @@ module "server_instance_2" {
   vpc_security_group_id = module.ec2_security_group.ec2_sg_id
   ebs_volume_size       = 8
   ebs_volume_type       = "gp2"
-  key_pair_name         = module.key_pair.key_pair_name
-  depends_on            = [module.ec2_security_group, module.key_pair]
+  # key_pair_name         = module.key_pair.key_pair_name
+  depends_on = [module.ec2_security_group, module.key_pair]
 }

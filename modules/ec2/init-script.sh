@@ -20,7 +20,7 @@ echo "
           <title> API and Load Balancer Test</title>
      </head>
      <body>
-          <h1>Availability Zone :- $AZ </h1>
+          <h1>I'm in the $AZ Availability Zone</h1>
      </body>
 </html>" | sudo tee /var/www/html/index.html
 
