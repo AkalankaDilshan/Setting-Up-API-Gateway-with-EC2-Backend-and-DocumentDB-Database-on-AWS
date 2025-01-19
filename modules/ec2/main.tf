@@ -3,8 +3,8 @@ data "aws_ami" "latest_ami" {
   most_recent = true
 
   filter {
-    name   = "name"
-    values = ["amazon-linux-2023-x86_64-gp2"]
+    name   = "image-id"
+    values = ["ami-09423ec3aa48e9438"]
   }
 
   filter {
