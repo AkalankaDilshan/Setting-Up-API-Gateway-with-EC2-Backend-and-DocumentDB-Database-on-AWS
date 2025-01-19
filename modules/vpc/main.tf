@@ -163,3 +163,18 @@ resource "aws_network_acl_rule" "public_deny_all_inbound" {
   egress         = false
   cidr_block     = "0.0.0.0/0"
 }
+
+
+# Associate the custom NACL with the public subnets
+resource "aws_network_acl_association" "public_subnet_acl_association" {
+  count          = length(aws_subnet.public_subnet)
+  subnet_id      = aws_subnet.public_subnet[count.index].id
+  network_acl_id = aws_network_acl.vpc_ACL.id
+}
+
+# Associate the custom NACL with the private subnets
+resource "aws_network_acl_association" "private_subnet_acl_association" {
+  count          = length(aws_subnet.private_subnet)
+  subnet_id      = aws_subnet.private_subnet[count.index].id
+  network_acl_id = aws_network_acl.vpc_ACL.id
+}
