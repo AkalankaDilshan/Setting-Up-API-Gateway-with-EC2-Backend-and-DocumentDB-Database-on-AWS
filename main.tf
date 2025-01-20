@@ -11,19 +11,19 @@ module "main_vpc" {
   private_subnet_cidrs = ["10.10.3.0/24", "10.10.4.0/24"]
 }
 
-module "lb_security_group" {
-  source  = "./modules/security_group_lb"
-  sg_name = "lb-sg"
-  vpc_id  = module.main_vpc.vpc_id
-}
-module "ec2_security_group" {
-  source                          = "./modules/security_group_ec2"
-  sg_name                         = "server-sg"
-  vpc_id                          = module.main_vpc.vpc_id
-  nat_gateway_eip                 = flatten([module.main_vpc.nat_gateway_eip])
-  load_balancer_security_group_id = module.lb_security_group.lb_sg_id
-  depends_on                      = [module.lb_security_group]
-}
+# module "lb_security_group" {
+#   source  = "./modules/security_group_lb"
+#   sg_name = "lb-sg"
+#   vpc_id  = module.main_vpc.vpc_id
+# }
+# module "ec2_security_group" {
+#   source                          = "./modules/security_group_ec2"
+#   sg_name                         = "server-sg"
+#   vpc_id                          = module.main_vpc.vpc_id
+#   nat_gateway_eip                 = flatten([module.main_vpc.nat_gateway_eip])
+#   load_balancer_security_group_id = module.lb_security_group.lb_sg_id
+#   depends_on                      = [module.lb_security_group]
+# }
 
 # module "key_pair" {
 #   source = "./modules/key-pair-ssh"
