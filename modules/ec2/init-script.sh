@@ -11,7 +11,7 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 
 # Fetch the Availability Zone of the EC2 instance
-AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+#AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
 
 echo "
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ echo "
           <title> API and Load Balancer Test</title>
      </head>
      <body>
-          <h1>I'm in the $AZ Availability Zone</h1>
+          <h1>I'm in the Availability Zone</h1>
      </body>
 </html>" | sudo tee /var/www/html/index.html
 
