@@ -1,19 +1,17 @@
 data "aws_ami" "latest_ami" {
   owners      = ["amazon"]
   most_recent = true
-
   filter {
     name   = "image-id"
     values = ["ami-09423ec3aa48e9438"]
   }
-
   filter {
     name   = "state"
     values = ["available"]
   }
 }
-
 resource "aws_instance" "server_instance" {
+  count                       = var.count
   ami                         = data.aws_ami.latest_ami.id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id
@@ -28,9 +26,8 @@ resource "aws_instance" "server_instance" {
     encrypted   = true
   }
 
-  # key_name = var.key_pair_name
-
+  key_name = var.key_pair_name
   tags = {
-    Name = var.instance_name
+    Name = "${var.instance_name}-${count.index + 1}"
   }
 }

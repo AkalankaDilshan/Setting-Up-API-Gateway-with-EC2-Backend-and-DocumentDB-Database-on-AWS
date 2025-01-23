@@ -3,6 +3,10 @@ variable "instance_name" {
   description = "name for the EC2 instance"
 }
 
+variable "count" {
+  type        = number
+  description = "number of instance"
+}
 variable "instance_type" {
   type        = string
   description = "type of EC2 instance"
@@ -29,8 +33,7 @@ variable "ebs_volume_size" {
   description = "size of instance value"
   default     = 8
 }
-
-# variable "key_pair_name" {
-#   type        = string
-#   description = "name for ec2 ssh instance key pair"
-# }
+variable "key_pair_name" {
+  type        = string
+  description = "name for ec2 ssh instance key pair"
+}
