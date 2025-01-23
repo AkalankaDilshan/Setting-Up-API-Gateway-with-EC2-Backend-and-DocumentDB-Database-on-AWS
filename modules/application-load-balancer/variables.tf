@@ -43,10 +43,10 @@ variable "target_group_type" {
   description = "the type in target group like instance,ip,lambda"
 }
 
-variable "targets_ids" {
-  type        = list(string)
-  description = "list of target ids"
-}
+# variable "targets_ids" {
+#   type        = list(string)
+#   description = "list of target ids"
+# }
 
 variable "enable_deletion_protection" {
   description = "Enable deletion protection for the ALB"
