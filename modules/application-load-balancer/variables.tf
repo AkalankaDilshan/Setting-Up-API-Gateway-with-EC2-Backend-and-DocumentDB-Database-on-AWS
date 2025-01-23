@@ -8,6 +8,15 @@ variable "alb_name" {
   description = "name for application load balancer"
 }
 
+variable "count" {
+  type        = number
+  description = "number of instance"
+}
+
+variable "target_id" {
+  type        = string
+  description = "targer ids"
+}
 variable "alb_subnet_ids" {
   type        = list(string)
   description = "subnet ids for stablize for alb"
