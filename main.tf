@@ -34,7 +34,7 @@ module "private_ec2" {
   instance_name         = "private-ec2"
   instance_type         = "t3.micro"
   counts                = length(module.main_vpc.private_subnet_id)
-  subnet_id             = module.main_vpc.private_subnet_id[count.index]
+  subnet_id             = module.main_vpc.private_subnet_id[counts.index]
   vpc_security_group_id = module.ec2_security_group.ec2_sg_id
   ebs_volume_size       = 8
   ebs_volume_type       = "gp2"
@@ -51,7 +51,7 @@ module "load_balancer" {
   vpc_id             = module.main_vpc.vpc_id
   alb_subnet_ids     = flatten(module.main_vpc.public_subnet_id)
   target_group_type  = "instance"
-  target_id          = module.private_ec2.instance_id[count.index]
+  target_id          = module.private_ec2.instance_id[counts.index]
   security_group_id  = module.lb_security_group.lb_sg_id
   depends_on         = [module.lb_security_group, module.private_ec2]
 }
