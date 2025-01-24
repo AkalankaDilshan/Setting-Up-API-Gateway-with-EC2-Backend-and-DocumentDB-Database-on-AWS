@@ -3,7 +3,7 @@ variable "instance_name" {
   description = "name for the EC2 instance"
 }
 
-variable "count" {
+variable "counts" {
   type        = number
   description = "number of instance"
 }

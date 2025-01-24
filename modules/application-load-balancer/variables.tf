@@ -8,7 +8,7 @@ variable "alb_name" {
   description = "name for application load balancer"
 }
 
-variable "count" {
+variable "counts" {
   type        = number
   description = "number of instance"
 }
