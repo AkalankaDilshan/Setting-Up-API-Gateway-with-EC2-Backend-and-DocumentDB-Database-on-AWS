@@ -33,7 +33,7 @@ resource "aws_lb_target_group" "app_tg" {
 resource "aws_lb_target_group_attachment" "alb_tg_attachment" {
   # for_each         = { for idx, id in var.targets_ids : idx => id }
   count            = var.counts
-  target_group_arn = aws_lb_target_group.tg.arn
+  target_group_arn = aws_lb_target_group.app_tg.arn
   target_id        = var.target_id
   # target_id        = each.value
   port = 80
