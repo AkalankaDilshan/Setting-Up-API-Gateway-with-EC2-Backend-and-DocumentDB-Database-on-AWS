@@ -3,10 +3,10 @@ variable "instance_name" {
   description = "name for the EC2 instance"
 }
 
-variable "counts" {
-  type        = number
-  description = "number of instance"
-}
+# variable "counts" {
+#   type        = number
+#   description = "number of instance"
+# }
 variable "instance_type" {
   type        = string
   description = "type of EC2 instance"

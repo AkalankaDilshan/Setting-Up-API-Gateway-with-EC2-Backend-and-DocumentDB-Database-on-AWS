@@ -11,13 +11,12 @@ data "aws_ami" "latest_ami" {
   }
 }
 resource "aws_instance" "server_instance" {
-  count                       = var.counts
   ami                         = data.aws_ami.latest_ami.id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.vpc_security_group_id]
   user_data                   = templatefile("${path.module}/init-script.sh", {})
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   disable_api_termination     = false
   ebs_optimized               = false
   root_block_device {
@@ -28,6 +27,6 @@ resource "aws_instance" "server_instance" {
 
   key_name = var.key_pair_name
   tags = {
-    Name = "${var.instance_name}-${count.index + 1}"
+    Name = var.instance_name
   }
 }

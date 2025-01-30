@@ -29,12 +29,23 @@ module "key_pair" {
   source = "./modules/key-pair-ssh"
 }
 
-module "private_ec2" {
+module "private_ec2_1" {
   source                = "./modules/ec2"
-  instance_name         = "private-ec2"
+  instance_name         = "private-ec2-1"
   instance_type         = "t3.micro"
-  counts                = length(module.main_vpc.private_subnet_id)
-  subnet_id             = module.main_vpc.private_subnet_id[counts.index]
+  subnet_id             = module.main_vpc.private_subnet_id[0]
+  vpc_security_group_id = module.ec2_security_group.ec2_sg_id
+  ebs_volume_size       = 8
+  ebs_volume_type       = "gp2"
+  key_pair_name         = module.key_pair.key_pair_name
+  depends_on            = [module.ec2_security_group, module.key_pair]
+}
+
+module "private_ec2_2" {
+  source                = "./modules/ec2"
+  instance_name         = "private-ec2-2"
+  instance_type         = "t3.micro"
+  subnet_id             = module.main_vpc.private_subnet_id[1]
   vpc_security_group_id = module.ec2_security_group.ec2_sg_id
   ebs_volume_size       = 8
   ebs_volume_type       = "gp2"
