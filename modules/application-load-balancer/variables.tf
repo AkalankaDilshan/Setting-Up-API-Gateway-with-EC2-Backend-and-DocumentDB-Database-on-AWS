@@ -13,10 +13,10 @@ variable "counts" {
   description = "number of instance"
 }
 
-variable "target_id" {
-  type        = string
-  description = "targer ids"
-}
+# variable "target_id" {
+#   type        = string
+#   description = "targer ids"
+# }
 variable "alb_subnet_ids" {
   type        = list(string)
   description = "subnet ids for stablize for alb"
@@ -42,11 +42,10 @@ variable "target_group_type" {
   type        = string
   description = "the type in target group like instance,ip,lambda"
 }
-
-# variable "targets_ids" {
-#   type        = list(string)
-#   description = "list of target ids"
-# }
+variable "targets_ids" {
+  type        = list(string)
+  description = "list of target ids"
+}
 
 variable "enable_deletion_protection" {
   description = "Enable deletion protection for the ALB"

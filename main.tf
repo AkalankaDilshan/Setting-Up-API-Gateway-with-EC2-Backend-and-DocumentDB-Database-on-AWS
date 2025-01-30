@@ -62,7 +62,7 @@ module "load_balancer" {
   vpc_id             = module.main_vpc.vpc_id
   alb_subnet_ids     = flatten(module.main_vpc.public_subnet_id)
   target_group_type  = "instance"
-  target_id          = module.private_ec2.instance_id[counts.index]
+  targets_ids        = [module.private_ec2_1.instance_id, module.private_ec2_2.instance_id]
   security_group_id  = module.lb_security_group.lb_sg_id
-  depends_on         = [module.lb_security_group, module.private_ec2]
+  depends_on         = [module.lb_security_group, module.private_ec2_1, module.private_ec2_2]
 }
