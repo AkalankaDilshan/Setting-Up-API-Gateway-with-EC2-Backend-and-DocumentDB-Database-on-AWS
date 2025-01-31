@@ -13,8 +13,8 @@ sudo systemctl enable httpd
 # Fetch the Availability Zone of the EC2 instance
 AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
 
-echo "
-<!DOCTYPE html>
+# Create the HTML file with the correct AZ
+echo "<!DOCTYPE html>
 <html>
      <head>
           <title> API and Load Balancer Test</title>
