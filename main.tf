@@ -55,8 +55,8 @@ module "private_ec2_2" {
 
 
 module "load_balancer" {
-  source             = "./modules/application-load-balancer"
-  counts             = length(module.private_ec2.instance_id)
+  source = "./modules/application-load-balancer"
+  # counts             = length(module.private_ec2.instance_id)
   alb_name           = "app-lb"
   load_balancer_type = "application"
   vpc_id             = module.main_vpc.vpc_id

@@ -8,10 +8,10 @@ variable "alb_name" {
   description = "name for application load balancer"
 }
 
-variable "counts" {
-  type        = number
-  description = "number of instance"
-}
+# variable "counts" {
+#   type        = number
+#   description = "number of instance"
+# }
 
 # variable "target_id" {
 #   type        = string
